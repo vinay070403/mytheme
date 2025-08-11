@@ -1,70 +1,210 @@
-[![Build Status](https://travis-ci.org/Automattic/_s.svg?branch=master)](https://travis-ci.org/Automattic/_s)
+# MyTheme - WordPress Basic Theme Development Assignment
 
-_s
-===
+[![License: GPL v2](https://img.shields.io/badge/License-GPL%20v2-blue.svg)](https://www.gnu.org/licenses/old-licenses/gpl-2.0.html)
 
-Hi. I'm a starter theme called `_s`, or `underscores`, if you like. I'm a theme meant for hacking so don't use me as a Parent Theme. Instead try turning me into the next, most awesome, WordPress theme out there. That's what I'm here for.
+---
 
-My ultra-minimal CSS might make me look like theme tartare but that means less stuff to get in your way when you're designing your awesome theme. Here are some of the other more interesting things you'll find here:
+## Overview
 
-* A modern workflow with a pre-made command-line interface to turn your project into a more pleasant experience.
-* A just right amount of lean, well-commented, modern, HTML5 templates.
-* A custom header implementation in `inc/custom-header.php`. Just add the code snippet found in the comments of `inc/custom-header.php` to your `header.php` template.
-* Custom template tags in `inc/template-tags.php` that keep your templates clean and neat and prevent code duplication.
-* Some small tweaks in `inc/template-functions.php` that can improve your theming experience.
-* A script at `js/navigation.js` that makes your menu a toggled dropdown on small screens (like your phone), ready for CSS artistry. It's enqueued in `functions.php`.
-* 2 sample layouts in `sass/layouts/` made using CSS Grid for a sidebar on either side of your content. Just uncomment the layout of your choice in `sass/style.scss`.
-Note: `.no-sidebar` styles are automatically loaded.
-* Smartly organized starter CSS in `style.css` that will help you to quickly get your design off the ground.
-* Full support for `WooCommerce plugin` integration with hooks in `inc/woocommerce.php`, styling override woocommerce.css with product gallery features (zoom, swipe, lightbox) enabled.
-* Licensed under GPLv2 or later. :) Use it to make something cool.
+**MyTheme** is a custom WordPress theme developed from scratch as part of a **Basic Theme Development Assignment**. This project tests foundational skills in WordPress theme development, including template creation, custom post types, and theme features.
 
-Installation
----------------
+The theme is based on the popular starter theme [_Underscores_](https://underscores.me/) and tailored to meet specific assignment requirements.
 
-### Requirements
+---
 
-`_s` requires the following dependencies:
+## Assignment Requirements
 
-- [Node.js](https://nodejs.org/)
-- [Composer](https://getcomposer.org/)
+You are required to develop a WordPress theme with the following pages and templates:
 
-### Quick Start
+### Pages:
+- **Homepage** — Custom homepage layout
+- **Blog Page** — List of all blog posts with pagination
+- **Single Post Page** — Display single blog posts
+- **Portfolio Page** — Displays portfolio custom post type entries
 
-Clone or download this repository, change its name to something else (like, say, `megatherium-is-awesome`), and then you'll need to do a six-step find and replace on the name in all the templates.
+### Templates:
+- Homepage (`home.php`)
+- Blog listing (`archive.php` or `home.php`)
+- Single post (`single.php`)
+- Portfolio custom post type archive (`archive-portfolio.php`)
+- Author archive (`author.php`)
+- Category archive (`category.php`)
+- Tag archive (`tag.php`)
+- Date/Month/Year archive (`date.php` or archive templates)
 
-1. Search for `'_s'` (inside single quotations) to capture the text domain and replace with: `'megatherium-is-awesome'`.
-2. Search for `_s_` to capture all the functions names and replace with: `megatherium_is_awesome_`.
-3. Search for `Text Domain: _s` in `style.css` and replace with: `Text Domain: megatherium-is-awesome`.
-4. Search for <code>&nbsp;_s</code> (with a space before it) to capture DocBlocks and replace with: <code>&nbsp;Megatherium_is_Awesome</code>.
-5. Search for `_s-` to capture prefixed handles and replace with: `megatherium-is-awesome-`.
-6. Search for `_S_` (in uppercase) to capture constants and replace with: `MEGATHERIUM_IS_AWESOME_`.
+---
 
-Then, update the stylesheet header in `style.css`, the links in `footer.php` with your own information and rename `_s.pot` from `languages` folder to use the theme's slug. Next, update or delete this readme.
+## Features Implemented
 
-### Setup
+- Fully responsive and clean design
+- Custom post type **Portfolio** registered and integrated
+- WordPress Loop and pagination on blog pages
+- Featured image support for posts and portfolio items
+- Navigation menus registered and displayed
+- Sidebar widget area implemented
+- Author, category, tag, and date archive templates
+- Proper enqueuing of styles and scripts following WordPress best practices
+- Translation-ready text domain setup
 
-To start using all the tools that come with `_s`  you need to install the necessary Node.js and Composer dependencies :
+---
 
-```sh
-$ composer install
-$ npm install
+## Getting Started
+
+### Prerequisites
+
+- Local WordPress environment (e.g., [LocalWP](https://localwp.com/))
+- PHP 7.0 or higher
+- WordPress 5.4 or higher
+
+### Installation
+
+1. Clone or download this repository.
+2. Copy the `mytheme` folder to your WordPress installation's `wp-content/themes/` directory.
+3. Activate the theme from **Appearance > Themes** in your WordPress dashboard.
+4. Import or create posts and portfolio items.
+5. Assign menus under **Appearance > Menus**.
+6. Customize widgets under **Appearance > Widgets** if desired.
+
+---
+
+## Folder Structure
+```
+mytheme/
+├── assets/ # Images, fonts, CSS/JS assets
+├── inc/ # PHP includes and functions
+├── template-parts/ # Template partials (header, footer, sidebar)
+├── archive-portfolio.php
+├── archive.php
+├── author.php
+├── category.php
+├── footer.php
+├── functions.php
+├── header.php
+├── home.php
+├── index.php
+├── page.php
+├── README.md
+├── screenshot.png
+├── single.php
+├── style.css
+├── tag.php
+└── date.php
 ```
 
-### Available CLI commands
+---
 
-`_s` comes packed with CLI commands tailored for WordPress theme development :
+## Custom Post Types
 
-- `composer lint:wpcs` : checks all PHP files against [PHP Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/php/).
-- `composer lint:php` : checks all PHP files for syntax errors.
-- `composer make-pot` : generates a .pot file in the `languages/` directory.
-- `npm run compile:css` : compiles SASS files to css.
-- `npm run compile:rtl` : generates an RTL stylesheet.
-- `npm run watch` : watches all SASS files and recompiles them to css when they change.
-- `npm run lint:scss` : checks all SASS files against [CSS Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/css/).
-- `npm run lint:js` : checks all JavaScript files against [JavaScript Coding Standards](https://developer.wordpress.org/coding-standards/wordpress-coding-standards/javascript/).
-- `npm run bundle` : generates a .zip archive for distribution, excluding development and system files.
+- **Portfolio**: Custom post type registered to showcase portfolio items.
+- Supports featured images and custom templates.
 
-Now you're ready to go! The next step is easy to say, but harder to do: make an awesome WordPress theme. :)
+---
 
-Good luck!
+## Screenshots
+
+![Homepage](screenshots/homepage.png)
+![Blog Page](screenshots/blog-page.png)
+![Single Post](screenshots/single-post.png)
+![Portfolio](screenshots/portfolio.png)
+
+---
+
+## License
+
+This project is licensed under the **GNU General Public License v2 or later (GPL v2+)**. See the [LICENSE](LICENSE) file for details.
+
+---
+
+## Author
+
+Vinay Chavada  
+Website: [https://vinaychavada.com](https://vinaychavada.com)  
+Email: vinay@example.com
+
+---
+
+## Acknowledgments
+
+- [_Underscores Starter Theme_](https://underscores.me/) for the great foundation  
+- WordPress Codex and Developer Handbook for documentation  
+- Normalize.css by Nicolas Gallagher and Jonathan Neal
+
+
+---
+
+Step 1: Setup Your Environment
+
+Step 2: Verify Theme Basics
+
+Step 3: Create Homepage Template (front-page.php)
+
+Step 4: Test Homepage Template
+Refresh your site homepage (http://mysite.local/)
+
+Step 5: Blog Page Template (Listing All Posts with Pagination)
+5.1 Create a template file for Blog page: home.php
+
+Step 6: Create the Single Post Template (single.php)
+Now it’s time for the Portfolio Custom Post Type (CPT) — this lets you add and manage portfolio items separately from regular posts.
+
+Step 7: Register the Portfolio Custom Post Type
+7.1 Open your theme’s functions.php file in VSCode
+7.2 Add this code at the end of functions.php to register the Portfolio CPT:
+7.3 Save the file.
+7.4 Go to your WordPress Admin dashboard → You should now see a new menu item called Portfolio in the sidebar.
+
+Step 8: Create Portfolio Archive Template (archive-portfolio.php)
+
+Step 9: Create Single Portfolio Template (single-portfolio.php)
+
+Step 10: Test Portfolio CPT
+Perfect! Now let’s create the Author, Category, Tag, and Date Archive Templates. These templates help WordPress display posts filtered by author, category, tag, or date.
+
+Step 11: Create Archive Templates
+11.1 Author Archive Template (author.php)
+11.2 Category Archive Template (category.php)
+11.3 Tag Archive Template (tag.php)
+11.4 Date Archive Template (date.php)
+
+Step 12: Test Archive Pages
+Author archive: visit an author URL, e.g.,
+http://yoursite.local/author/authorname/
+
+Step 13: Register Navigation Menus & Add to Header
+13.1 Register Menus in functions.php
+```
+function mytheme_register_menus() {
+    register_nav_menus(
+        array(
+            'primary' => __( 'Primary Menu', 'mytheme' ),
+            'footer'  => __( 'Footer Menu', 'mytheme' ),
+        )
+    );
+}
+add_action( 'after_setup_theme', 'mytheme_register_menus' );
+```
+13.2 Add Menu to header.php
+Open header.php and add this inside the <header> tag or where you want the menu to appear:
+```
+<?php
+wp_nav_menu( array(
+    'theme_location' => 'primary',
+    'menu_class'     => 'primary-menu',
+    'container'      => 'nav',
+    'container_class'=> 'primary-navigation',
+) );
+?>
+```
+Step 14: Register Widget Areas (Sidebars)
+14.1 Register Sidebar in functions.php
+
+Step 15: Add Featured Image Support & Display Thumbnails
+
+Step 16: Styling Your Theme
+
+For questions or feedback, feel free to open an issue or contact me via email.
+
+---
+
+**Happy Coding!**
+
