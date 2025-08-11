@@ -129,9 +129,78 @@ Email: vinay@example.com
 - WordPress Codex and Developer Handbook for documentation  
 - Normalize.css by Nicolas Gallagher and Jonathan Neal
 
+
 ---
 
-## Contact
+Step 1: Setup Your Environment
+
+Step 2: Verify Theme Basics
+
+Step 3: Create Homepage Template (front-page.php)
+
+Step 4: Test Homepage Template
+Refresh your site homepage (http://mysite.local/)
+
+Step 5: Blog Page Template (Listing All Posts with Pagination)
+5.1 Create a template file for Blog page: home.php
+
+Step 6: Create the Single Post Template (single.php)
+Now it’s time for the Portfolio Custom Post Type (CPT) — this lets you add and manage portfolio items separately from regular posts.
+
+Step 7: Register the Portfolio Custom Post Type
+7.1 Open your theme’s functions.php file in VSCode
+7.2 Add this code at the end of functions.php to register the Portfolio CPT:
+7.3 Save the file.
+7.4 Go to your WordPress Admin dashboard → You should now see a new menu item called Portfolio in the sidebar.
+
+Step 8: Create Portfolio Archive Template (archive-portfolio.php)
+
+Step 9: Create Single Portfolio Template (single-portfolio.php)
+
+Step 10: Test Portfolio CPT
+Perfect! Now let’s create the Author, Category, Tag, and Date Archive Templates. These templates help WordPress display posts filtered by author, category, tag, or date.
+
+Step 11: Create Archive Templates
+11.1 Author Archive Template (author.php)
+11.2 Category Archive Template (category.php)
+11.3 Tag Archive Template (tag.php)
+11.4 Date Archive Template (date.php)
+
+Step 12: Test Archive Pages
+Author archive: visit an author URL, e.g.,
+http://yoursite.local/author/authorname/
+
+Step 13: Register Navigation Menus & Add to Header
+13.1 Register Menus in functions.php
+```
+function mytheme_register_menus() {
+    register_nav_menus(
+        array(
+            'primary' => __( 'Primary Menu', 'mytheme' ),
+            'footer'  => __( 'Footer Menu', 'mytheme' ),
+        )
+    );
+}
+add_action( 'after_setup_theme', 'mytheme_register_menus' );
+```
+13.2 Add Menu to header.php
+Open header.php and add this inside the <header> tag or where you want the menu to appear:
+```
+<?php
+wp_nav_menu( array(
+    'theme_location' => 'primary',
+    'menu_class'     => 'primary-menu',
+    'container'      => 'nav',
+    'container_class'=> 'primary-navigation',
+) );
+?>
+```
+Step 14: Register Widget Areas (Sidebars)
+14.1 Register Sidebar in functions.php
+
+Step 15: Add Featured Image Support & Display Thumbnails
+
+Step 16: Styling Your Theme
 
 For questions or feedback, feel free to open an issue or contact me via email.
 
