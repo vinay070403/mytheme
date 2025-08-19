@@ -46,13 +46,6 @@ function mytheme_setup() {
 		*/
 	add_theme_support( 'post-thumbnails' );
 
-	// This theme uses wp_nav_menu() in one location.
-	register_nav_menus(
-		array(
-			'menu-1' => esc_html__( 'Primary', 'mytheme' ),
-		)
-	);
-
 	/*
 		* Switch default core markup for search form, comment form, and comments
 		* to output valid HTML5.
@@ -224,6 +217,21 @@ function mytheme_register_menus() {
     );
 }
 add_action( 'after_setup_theme', 'mytheme_register_menus' );
+
+/**
+ * Fallback menu function for when no menu is assigned
+ */
+function mytheme_fallback_menu() {
+    echo '<ul id="primary-menu" class="primary-menu">';
+    echo '<li><a href="' . esc_url(home_url('/')) . '">' . esc_html__('Home', 'mytheme') . '</a></li>';
+    wp_list_pages(array(
+        'title_li' => '',
+        'depth'    => 1,
+    ));
+    echo '</ul>';
+}
+
+
 
 
 function mytheme_enqueue_assets() {
