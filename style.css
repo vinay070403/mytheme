@@ -1,3 +1,18 @@
+/*
+Theme Name: MyTheme
+Description: A custom WordPress theme with portfolio support and modern design
+Author: Your Name
+Author URI: https://yoursite.com
+Version: 1.0.0
+Requires at least: 5.0
+Tested up to: 6.4
+Requires PHP: 7.4
+License: GPL v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: mytheme
+Tags: custom-background, custom-logo, custom-menu, featured-images, threaded-comments, translation-ready, portfolio
+*/
+
 /* --- General Body & Typography --- */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -39,6 +54,191 @@ body {
 #primary-menu li a:focus {
     background: #0073aa;
     color: #fff;
+}
+
+/* --- Header Styles --- */
+.site-header {
+    background: white;
+    padding: 20px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.site-branding {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.site-title {
+    margin: 0 0 10px 0;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.site-title a {
+    color: #333;
+    text-decoration: none;
+}
+
+.site-title a:hover {
+    color: #0073aa;
+}
+
+.site-description {
+    margin: 0;
+    color: #666;
+    font-size: 1.1rem;
+}
+
+/* --- Navigation Styles --- */
+.main-navigation {
+    background: #222;
+    padding: 0;
+    margin: 0;
+}
+
+.main-navigation ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.main-navigation li {
+    position: relative;
+    margin: 0;
+}
+
+.main-navigation a {
+    display: block;
+    padding: 15px 25px;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: background 0.3s ease;
+}
+
+.main-navigation a:hover,
+.main-navigation a:focus {
+    background: #0073aa;
+    color: #fff;
+}
+
+/* Dropdown menus */
+.main-navigation ul ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #333;
+    min-width: 200px;
+    z-index: 99999;
+    flex-direction: column;
+}
+
+.main-navigation ul ul ul {
+    left: 100%;
+    top: 0;
+}
+
+.main-navigation ul li:hover > ul,
+.main-navigation ul li.focus > ul {
+    display: flex;
+}
+
+/* Menu toggle button */
+.menu-toggle {
+    display: none;
+    background: #0073aa;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    margin: 10px 0;
+}
+
+.menu-toggle:hover {
+    background: #005d8f;
+}
+
+/* Responsive navigation */
+@media screen and (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+    
+    .main-navigation ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .main-navigation.toggled ul {
+        display: flex;
+    }
+    
+    .main-navigation ul ul {
+        position: static;
+        background: #333;
+        margin-left: 20px;
+    }
+    
+    .main-navigation ul ul ul {
+        left: auto;
+        top: auto;
+    }
+}
+
+/* Additional menu styling */
+.main-navigation .menu-item {
+    position: relative;
+}
+
+.main-navigation .menu-item-has-children > a::after {
+    content: '▼';
+    margin-left: 5px;
+    font-size: 0.8em;
+}
+
+.main-navigation .sub-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #333;
+    min-width: 200px;
+    z-index: 99999;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.main-navigation .menu-item:hover > .sub-menu,
+.main-navigation .menu-item.focus > .sub-menu {
+    display: block;
+}
+
+.main-navigation .sub-menu .sub-menu {
+    left: 100%;
+    top: 0;
+}
+
+/* Ensure menu items are visible */
+.main-navigation ul li {
+    display: block;
+}
+
+.main-navigation ul li a {
+    white-space: nowrap;
+}
+
+/* Menu toggle button positioning */
+.menu-toggle {
+    width: 100%;
+    text-align: center;
 }
 
 /* --- Blog Posts --- */
